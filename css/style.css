@@ -1,0 +1,58 @@
+/*
+COLOURS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+*/
+
+/*
+*Implementing a simple reset using the universal selector(selects all elements on the page)
+*that is: Applying a given set of properties on the entire page
+*/
+
+*{
+    /* NOTE: by default, browsers apply a certain margin and padding to elements e.g h1 */
+    margin: 0; 
+    padding: 0;
+    /* NOTE: the box-sizing changes the box model of elements so that the borders and padding are no
+    * longer added to the total width or height specified for the box.
+    */
+    box-sizing: border-box;
+}
+
+body{
+    /* NOTE: the universal font properties are better specified in the body element
+    * this is because the properties related to fonts are usually inheritted(using the power of INHERITANCE)
+    */
+    font-family: Lato, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #777777;
+    padding: 30px;
+}
+
+.header{
+    /* height: 95vh- this means the height at all times will be 95% of the VIEW PORT HRIGHT */
+    height: 95vh;
+    /* Backgorund-image -> Images can be placed untop of each other. This is achieved by including a comma seperated list of the image url's
+    *  note that the first will be untop and the second will be behind(here, the gradient is untop and the image behind)
+    *
+    * Hint(linear-gradient) A third property can be added to describe the direction of the gradient
+    */
+    background-image: linear-gradient(
+        to right bottom,
+         rgba(126, 213, 111, 0.8),
+          rgba(40, 180, 131, 0.8)),
+        url("../img/hero.jpg");
+
+    /* background-size: cover- this means that what ever the width of the viewport, the element will adapt nicely to the viewport */
+    background-size: cover;
+    /* background-position: top- This ensures that the top of the element(in this case the image) always stays no matter the 
+    * viewport size....as well as center, bottom (characteristically speaking)
+    */
+    background-position: top;
+
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
