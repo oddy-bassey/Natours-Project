@@ -53,6 +53,59 @@ body{
     * viewport size....as well as center, bottom (characteristically speaking)
     */
     background-position: top;
+    position: relative;
 
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
+
+.logo-box {
+    position: absolute;
+
+    /* NOTE: the top and left properties begin count or take effect from the parent element which has its position set to relative.
+    *  Notice that without the position of the parent element(header) set to relative, it begins its count from the screen axis
+    */
+    top: 40px;
+    left: 40px;
+}
+
+.logo {
+    /* NOTE: here, only the height is specified thereby allowing the browser to scale the width accordingly
+    *  This is also applicable to the width being specified only also allowing the browser to scale the height accordingly
+    *  Specifying the height should be more preferrable!
+    */
+    height: 35px;
+}
+
+.text-box {
+    position: absolute;
+
+    /* NOTE: The top and left properties positions the element at 50% of parent's height and 50% of parent's width.
+    *  NOTE: The top, bottom, right and left properties are in relation to the parent element(header)
+    */
+    top: 45%;
+    left: 50%;
+
+    /* NOTE: This then positions the element at the center by subtracting 50% of the elements height and width respectively 
+    *  NOTE: The translate x and y coordinates are in relation to the element itself(text-box)
+    */
+    transform: translate(-50%, -50%);
+}
+
+.heading-primary {
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.heading-primary-main {
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+}
+
+.heading-primary-sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 17.4px;
 }
