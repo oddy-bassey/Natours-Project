@@ -77,11 +77,12 @@ body{
 }
 
 .logo:hover {
-    animation: moveInRightRotate 1s ease-out;
+    animation: moveInRightRotate 1s ease;
 }
 
 .text-box {
     position: absolute;
+    text-align: center;
 
     /* NOTE: The top and left properties positions the element at 50% of parent's height and 50% of parent's width.
     *  NOTE: The top, bottom, right and left properties are in relation to the parent element(header)
@@ -98,6 +99,7 @@ body{
 .heading-primary {
     color: #fff;
     text-transform: uppercase;
+    margin-bottom: 50px;
     
     backface-visibility: hidden;
 }
@@ -178,3 +180,46 @@ body{
         transform: rotate(360deg)
     }
 }
+
+/* A PSEUDO CLASS is a lspecia state of a selector E.g link, hover e.t.c
+*  Pseudo classes are used to style elements under special conditions
+* 
+*  NOTE: link is a special state of a selector when it is an anchor element(<a></a>)
+*        visited state is the state when the user has clicked the button before and then sees it again
+*/
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    
+    /*NOTE: you can specify the padding values either by--> top&bottom  left&right or top right bottom left */
+    padding: 15px 40px; 
+    
+    /*NOTE: The botton currently has the behaviour of an inline element because its simply text but we should
+    *       display it as an inline-block to gain some padding around it. This way the box model works on
+            this element as if it was just a normal block element.
+    */
+    display: inline-block;
+    border-radius: 80px;
+    transition: all .1s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+
+    /* The box-shadow property holds the following proertie in the stated order
+    *  shadow to X-axis, shadow to y-aixs, blur, color
+    */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+}
+
+.btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
+}
+
