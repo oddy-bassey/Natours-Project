@@ -76,6 +76,10 @@ body{
     height: 35px;
 }
 
+.logo:hover {
+    animation: moveInRightRotate 1s ease-out;
+}
+
 .text-box {
     position: absolute;
 
@@ -94,6 +98,8 @@ body{
 .heading-primary {
     color: #fff;
     text-transform: uppercase;
+    
+    backface-visibility: hidden;
 }
 
 .heading-primary-main {
@@ -101,6 +107,15 @@ body{
     font-size: 60px;
     font-weight: 400;
     letter-spacing: 35px;
+
+    animation-name: moveInLeft;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;/* The animation timing function defines how fast or slow the animation will run*/
+    
+    /*
+    animation-iteration-count: 3;
+    animation-delay: 2s; 
+    */
 }
 
 .heading-primary-sub {
@@ -108,4 +123,58 @@ body{
     font-size: 20px;
     font-weight: 400;
     letter-spacing: 17.4px;
+
+    animation-name: moveInRight;
+    animation-duration: 2s;
+    animation: moveInRight 2s ease-out;
+}
+
+/* NOTE: There are two types of transition in CSS
+*  The first one is to use the transition property, and then change the properties that you want to animate on an event E.g Like when you hover
+*  on an element.
+*
+*  The second one is animations...
+*/
+
+@keyframes moveInLeft {
+    0%{
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    80%{
+        transform: translateX(10px);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    0%{
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    80%{
+        transform: translateX(-10px);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRightRotate {
+    0%{ 
+        transform: rotate(180deg);
+    }
+
+    100%{
+        
+        transform: rotate(360deg)
+    }
 }
