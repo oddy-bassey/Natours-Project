@@ -181,11 +181,25 @@ body{
     }
 }
 
+@keyframes moveInButton {
+    0%{
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
 /* A PSEUDO CLASS is a lspecia state of a selector E.g link, hover e.t.c
 *  Pseudo classes are used to style elements under special conditions
 * 
 *  NOTE: link is a special state of a selector when it is an anchor element(<a></a>)
 *        visited state is the state when the user has clicked the button before and then sees it again
+*
+*  NOTE: When using the transition property, it has to be specified on the initial state of the element
 */
 .btn:link,
 .btn:visited {
@@ -201,7 +215,8 @@ body{
     */
     display: inline-block;
     border-radius: 80px;
-    transition: all .1s;
+    transition: all .2s;
+    position: relative;
 }
 
 .btn:hover {
@@ -223,3 +238,46 @@ body{
     color: #777;
 }
 
+/*
+*  ::after pseudo element is like a virtual element right after the pseudo element we are selecting
+*  NOTE: in order to enable the pseudo element display on the page, we need to specify it's content and 
+*  display property. Also note that the ::after pseudo element is treated like a child of the button so it inherits
+*  the property of the button element.. E.g height and width (specified as 100% of it's parent)
+*/
+
+.btn::after {
+    content: "";
+    display: inline-block;/* This is because the button is also an inline block */
+    height: 100%;
+    width: 100%;
+    border-radius: 80px;
+    
+    /* NOTE: absolute positioning needs to have a reference. This will be the first element wih relative 
+    *  position that it can find
+    */
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    /* This defines the positon of the element if they are one untop of the other. -1(behind) and 1(infront) */
+    z-index: -1;
+    transition: all .7s;
+}
+
+.btn-white::after {
+    background-color: #fff;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animated {
+    animation: moveInButton .5s ease-out .75s;
+
+    /* animation-fill-mode: backwards; enables the styles at 0% of the animation to be applied before the
+    *   animation starts
+    */
+    animation-fill-mode: backwards;
+}
