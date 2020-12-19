@@ -11,14 +11,26 @@ Dark green: #28b485
 *that is: Applying a given set of properties on the entire page
 */
 
-*{
+*,
+*::after,
+*::before {
     /* NOTE: by default, browsers apply a certain margin and padding to elements e.g h1 */
     margin: 0; 
     padding: 0;
     /* NOTE: the box-sizing changes the box model of elements so that the borders and padding are no
     * longer added to the total width or height specified for the box.
     */
-    box-sizing: border-box;
+    box-sizing: inherit;
+}
+
+html {
+    /* NOTE:root font size is always set using the html selector
+    *       setting the root font size to pixels is bad practice because it restricts the user's ability
+    *       to reset the font size of the page via the browser. Its best to use percentage(%) value which is 
+            relative to the user agent default defined font-size value. Note that rems are not supported for 
+            anything less than internet explorer 9.... else it won't work!
+    */
+    font-size: 62.5%;
 }
 
 body{
@@ -27,16 +39,17 @@ body{
     */
     font-family: Lato, sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    /*font-size: 16px;*/
     line-height: 1.7;
     color: #777777;
-    padding: 30px;
+    padding: 3rem;
+    box-sizing: border-box;
 }
 
 .header{
     /* height: 95vh- this means the height at all times will be 95% of the VIEW PORT HRIGHT */
     height: 95vh;
-    /* Backgorund-image -> Images can be placed untop of each other. This is achieved by including a comma seperated list of the image url's
+    /*  Backgorund-image -> Images can be placed untop of each other. This is achieved by including a comma seperated list of the image url's
     *  note that the first will be untop and the second will be behind(here, the gradient is untop and the image behind)
     *
     * Hint(linear-gradient) A third property can be added to describe the direction of the gradient
@@ -64,8 +77,8 @@ body{
     /* NOTE: the top and left properties begin count or take effect from the parent element which has its position set to relative.
     *  Notice that without the position of the parent element(header) set to relative, it begins its count from the screen axis
     */
-    top: 40px;
-    left: 40px;
+    top: 4rem;
+    left: 4rem;
 }
 
 .logo {
@@ -73,11 +86,11 @@ body{
     *  This is also applicable to the width being specified only also allowing the browser to scale the height accordingly
     *  Specifying the height should be more preferrable!
     */
-    height: 35px;
+    height: 3.5rem;
 }
 
 .logo:hover {
-    animation: moveInRightRotate 1s ease;
+    animation: rotate 2s ease;
 }
 
 .text-box {
@@ -99,16 +112,16 @@ body{
 .heading-primary {
     color: #fff;
     text-transform: uppercase;
-    margin-bottom: 50px;
+    margin-bottom: 5rem;
     
     backface-visibility: hidden;
 }
 
 .heading-primary-main {
     display: block;
-    font-size: 60px;
+    font-size: 5rem;
     font-weight: 400;
-    letter-spacing: 35px;
+    letter-spacing: 3.5rem;
 
     animation-name: moveInLeft;
     animation-duration: 2s;
@@ -122,9 +135,9 @@ body{
 
 .heading-primary-sub {
     display: block;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 400;
-    letter-spacing: 17.4px;
+    letter-spacing: 1.75rem;
 
     animation-name: moveInRight;
     animation-duration: 2s;
@@ -141,11 +154,11 @@ body{
 @keyframes moveInLeft {
     0%{
         opacity: 0;
-        transform: translateX(-100px);
+        transform: translateX(-10rem);
     }
 
     80%{
-        transform: translateX(10px);
+        transform: translateX(1rem);
     }
 
     100%{
@@ -157,11 +170,11 @@ body{
 @keyframes moveInRight {
     0%{
         opacity: 0;
-        transform: translateX(100px);
+        transform: translateX(10rem);
     }
 
     80%{
-        transform: translateX(-10px);
+        transform: translateX(-1rem);
     }
 
     100%{
@@ -170,21 +183,16 @@ body{
     }
 }
 
-@keyframes moveInRightRotate {
+@keyframes rotate {
     0%{ 
-        transform: rotate(180deg);
-    }
-
-    100%{
-        
-        transform: rotate(360deg)
+        transform: rotate(360deg);
     }
 }
 
 @keyframes moveInButton {
     0%{
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(3rem);
     }
 
     100%{
@@ -207,30 +215,31 @@ body{
     text-decoration: none;
     
     /*NOTE: you can specify the padding values either by--> top&bottom  left&right or top right bottom left */
-    padding: 15px 40px; 
+    padding: 1.5rem 4rem; 
     
     /*NOTE: The botton currently has the behaviour of an inline element because its simply text but we should
     *       display it as an inline-block to gain some padding around it. This way the box model works on
             this element as if it was just a normal block element.
     */
     display: inline-block;
-    border-radius: 80px;
+    border-radius: 8rem;
     transition: all .2s;
     position: relative;
+    font-size: 1.6rem;
 }
 
 .btn:hover {
-    transform: translateY(-3px);
+    transform: translateY(-.3rem);
 
     /* The box-shadow property holds the following proertie in the stated order
     *  shadow to X-axis, shadow to y-aixs, blur, color
     */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
 }
 
 .btn:active {
     transform: translateY(1px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
 }
 
 .btn-white {
@@ -250,7 +259,7 @@ body{
     display: inline-block;/* This is because the button is also an inline block */
     height: 100%;
     width: 100%;
-    border-radius: 80px;
+    border-radius: 8rem;
     
     /* NOTE: absolute positioning needs to have a reference. This will be the first element wih relative 
     *  position that it can find
@@ -262,7 +271,7 @@ body{
     /* This defines the positon of the element if they are one untop of the other. -1(behind) and 1(infront) */
     z-index: -1;
     transition: all .7s;
-}
+}  
 
 .btn-white::after {
     background-color: #fff;
@@ -280,4 +289,4 @@ body{
     *   animation starts
     */
     animation-fill-mode: backwards;
-}
+} 
