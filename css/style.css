@@ -1,148 +1,116 @@
 /*
-COLOURS:
-
-Light green: #7ed56f
-Medium green: #55c57a
-Dark green: #28b485
-*/
-
-/*
 *Implementing a simple reset using the universal selector(selects all elements on the page)
 *that is: Applying a given set of properties on the entire page
 */
-
 *,
 *::after,
 *::before {
-    /* NOTE: by default, browsers apply a certain margin and padding to elements e.g h1 */
-    margin: 0; 
-    padding: 0;
-    /* NOTE: the box-sizing changes the box model of elements so that the borders and padding are no
+  /* NOTE: by default, browsers apply a certain margin and padding to elements e.g h1 */
+  margin: 0;
+  padding: 0;
+  /* NOTE: the box-sizing changes the box model of elements so that the borders and padding are no
     * longer added to the total width or height specified for the box.
     */
-    box-sizing: inherit;
-}
+  box-sizing: inherit; }
 
 html {
-    /* NOTE:root font size is always set using the html selector
-    *       setting the root font size to pixels is bad practice because it restricts the user's ability
+  /* NOTE:root font size is always set using the html selector
+    *       setting th e root font size to pixels is bad practice because it restricts the user's ability
     *       to reset the font size of the page via the browser. Its best to use percentage(%) value which is 
             relative to the user agent default defined font-size value. Note that rems are not supported for 
             anything less than internet explorer 9.... else it won't work!
     */
-    font-size: 62.5%;
-}
+  font-size: 62.5%; }
 
-body{
-    /* NOTE: the universal font properties are better specified in the body element
+body {
+  /* NOTE: the universal font properties are better specified in the body element
     * this is because the properties related to fonts are usually inheritted(using the power of INHERITANCE)
     */
-    font-family: Lato, sans-serif;
-    font-weight: 400;
-    /*font-size: 16px;*/
-    line-height: 1.7;
-    color: #777777;
-    padding: 3rem;
-    box-sizing: border-box;
-}
+  font-family: Lato, sans-serif;
+  font-weight: 400;
+  /*font-size: 16px;*/
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem;
+  box-sizing: border-box; }
 
-.header{
-    /* height: 95vh- this means the height at all times will be 95% of the VIEW PORT HRIGHT */
-    height: 95vh;
-    /*  Backgorund-image -> Images can be placed untop of each other. This is achieved by including a comma seperated list of the image url's
+.header {
+  /* height: 95vh- this means the height at all times will be 95% of the VIEW PORT HRIGHT */
+  height: 95vh;
+  /*  Backgorund-image -> Images can be placed untop of each other. This is achieved by including a comma seperated list of the image url's
     *  note that the first will be untop and the second will be behind(here, the gradient is untop and the image behind)
     *
     * Hint(linear-gradient) A third property can be added to describe the direction of the gradient
     */
-    background-image: linear-gradient(
-        to right bottom,
-         rgba(126, 213, 111, 0.8),
-          rgba(40, 180, 131, 0.8)),
-        url("../img/hero.jpg");
-
-    /* background-size: cover- this means that what ever the width of the viewport, the element will adapt nicely to the viewport */
-    background-size: cover;
-    /* background-position: top- This ensures that the top of the element(in this case the image) always stays no matter the 
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero.jpg");
+  /* background-size: cover- this means that what ever the width of the viewport, the element will adapt nicely to the viewport */
+  background-size: cover;
+  /* background-position: top- This ensures that the top of the element(in this case the image) always stays no matter the 
     * viewport size....as well as center, bottom (characteristically speaking)
     */
-    background-position: top;
-    position: relative;
+  background-position: top;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); }
 
-    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-}
-
-.logo-box {
-    position: absolute;
-
-    /* NOTE: the top and left properties begin count or take effect from the parent element which has its position set to relative.
+.header__logo-box {
+  position: absolute;
+  /* NOTE: the top and left properties begin count or take effect from the parent element which has its position set to relative.
     *  Notice that without the position of the parent element(header) set to relative, it begins its count from the screen axis
     */
-    top: 4rem;
-    left: 4rem;
-}
+  top: 4rem;
+  left: 4rem; }
 
-.logo {
-    /* NOTE: here, only the height is specified thereby allowing the browser to scale the width accordingly
+.header__logo {
+  /* NOTE: here, only the height is specified thereby allowing the browser to scale the width accordingly
     *  This is also applicable to the width being specified only also allowing the browser to scale the height accordingly
     *  Specifying the height should be more preferrable!
     */
-    height: 3.5rem;
-}
+  height: 3.5rem; }
 
-.logo:hover {
-    animation: rotate 2s ease;
-}
+.header__logo:hover {
+  animation: rotate 2s ease; }
 
-.text-box {
-    position: absolute;
-    text-align: center;
-
-    /* NOTE: The top and left properties positions the element at 50% of parent's height and 50% of parent's width.
+.header__text-box {
+  position: absolute;
+  text-align: center;
+  /* NOTE: The top and left properties positions the element at 50% of parent's height and 50% of parent's width.
     *  NOTE: The top, bottom, right and left properties are in relation to the parent element(header)
     */
-    top: 45%;
-    left: 50%;
-
-    /* NOTE: This then positions the element at the center by subtracting 50% of the elements height and width respectively 
+  top: 45%;
+  left: 50%;
+  /* NOTE: This then positions the element at the center by subtracting 50% of the elements height and width respectively 
     *  NOTE: The translate x and y coordinates are in relation to the element itself(text-box)
     */
-    transform: translate(-50%, -50%);
-}
+  transform: translate(-50%, -50%); }
 
 .heading-primary {
-    color: #fff;
-    text-transform: uppercase;
-    margin-bottom: 5rem;
-    
-    backface-visibility: hidden;
-}
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 5rem;
+  backface-visibility: hidden; }
 
-.heading-primary-main {
-    display: block;
-    font-size: 5rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-
-    animation-name: moveInLeft;
-    animation-duration: 2s;
-    animation-timing-function: ease-out;/* The animation timing function defines how fast or slow the animation will run*/
-    
-    /*
+.heading-primary--main {
+  display: block;
+  font-size: 5rem;
+  font-weight: 400;
+  letter-spacing: 3.5rem;
+  animation-name: moveInLeft;
+  animation-duration: 2s;
+  animation-timing-function: ease-out;
+  /* The animation timing function defines how fast or slow the animation will run*/
+  /*
     animation-iteration-count: 3;
     animation-delay: 2s; 
-    */
-}
+    */ }
 
-.heading-primary-sub {
-    display: block;
-    font-size: 2rem;
-    font-weight: 400;
-    letter-spacing: 1.75rem;
-
-    animation-name: moveInRight;
-    animation-duration: 2s;
-    animation: moveInRight 2s ease-out;
-}
+.heading-primary--sub {
+  display: block;
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 1.75rem;
+  animation-name: moveInRight;
+  animation-duration: 2s;
+  animation: moveInRight 2s ease-out; }
 
 /* NOTE: There are two types of transition in CSS
 *  The first one is to use the transition property, and then change the properties that you want to animate on an event E.g Like when you hover
@@ -150,56 +118,37 @@ body{
 *
 *  The second one is animations...
 */
-
 @keyframes moveInLeft {
-    0%{
-        opacity: 0;
-        transform: translateX(-10rem);
-    }
-
-    80%{
-        transform: translateX(1rem);
-    }
-
-    100%{
-        opacity: 1;
-        transform: translate(0);
-    }
-}
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem); }
+  80% {
+    transform: translateX(1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
 
 @keyframes moveInRight {
-    0%{
-        opacity: 0;
-        transform: translateX(10rem);
-    }
-
-    80%{
-        transform: translateX(-1rem);
-    }
-
-    100%{
-        opacity: 1;
-        transform: translate(0);
-    }
-}
+  0% {
+    opacity: 0;
+    transform: translateX(10rem); }
+  80% {
+    transform: translateX(-1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
 
 @keyframes rotate {
-    0%{ 
-        transform: rotate(360deg);
-    }
-}
+  0% {
+    transform: rotate(360deg); } }
 
 @keyframes moveInButton {
-    0%{
-        opacity: 0;
-        transform: translateY(3rem);
-    }
-
-    100%{
-        opacity: 1;
-        transform: translate(0);
-    }
-}
+  0% {
+    opacity: 0;
+    transform: translateY(3rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
 
 /* A PSEUDO CLASS is a lspecia state of a selector E.g link, hover e.t.c
 *  Pseudo classes are used to style elements under special conditions
@@ -211,41 +160,34 @@ body{
 */
 .btn:link,
 .btn:visited {
-    text-transform: uppercase;
-    text-decoration: none;
-    
-    /*NOTE: you can specify the padding values either by--> top&bottom  left&right or top right bottom left */
-    padding: 1.5rem 4rem; 
-    
-    /*NOTE: The botton currently has the behaviour of an inline element because its simply text but we should
+  text-transform: uppercase;
+  text-decoration: none;
+  /*NOTE: you can specify the padding values either by--> top&bottom  left&right or top right bottom left */
+  padding: 1.5rem 4rem;
+  /*NOTE: The botton currently has the behaviour of an inline element because its simply text but we should
     *       display it as an inline-block to gain some padding around it. This way the box model works on
             this element as if it was just a normal block element.
     */
-    display: inline-block;
-    border-radius: 8rem;
-    transition: all .2s;
-    position: relative;
-    font-size: 1.6rem;
-}
+  display: inline-block;
+  border-radius: 8rem;
+  transition: all .2s;
+  position: relative;
+  font-size: 1.6rem; }
 
 .btn:hover {
-    transform: translateY(-.3rem);
-
-    /* The box-shadow property holds the following proertie in the stated order
+  transform: translateY(-0.3rem);
+  /* The box-shadow property holds the following proertie in the stated order
     *  shadow to X-axis, shadow to y-aixs, blur, color
     */
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
-}
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
 
 .btn:active {
-    transform: translateY(1px);
-    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
-}
+  transform: translateY(1px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
 
-.btn-white {
-    background-color: #fff;
-    color: #777;
-}
+.btn--white {
+  background-color: #fff;
+  color: #777; }
 
 /*
 *  ::after pseudo element is like a virtual element right after the pseudo element we are selecting
@@ -253,40 +195,33 @@ body{
 *  display property. Also note that the ::after pseudo element is treated like a child of the button so it inherits
 *  the property of the button element.. E.g height and width (specified as 100% of it's parent)
 */
-
 .btn::after {
-    content: "";
-    display: inline-block;/* This is because the button is also an inline block */
-    height: 100%;
-    width: 100%;
-    border-radius: 8rem;
-    
-    /* NOTE: absolute positioning needs to have a reference. This will be the first element wih relative 
+  content: "";
+  display: inline-block;
+  /* This is because the button is also an inline block */
+  height: 100%;
+  width: 100%;
+  border-radius: 8rem;
+  /* NOTE: absolute positioning needs to have a reference. This will be the first element wih relative 
     *  position that it can find
     */
-    position: absolute;
-    top: 0;
-    left: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* This defines the positon of the element if they are one untop of the other. -1(behind) and 1(infront) */
+  z-index: -1;
+  transition: all .7s; }
 
-    /* This defines the positon of the element if they are one untop of the other. -1(behind) and 1(infront) */
-    z-index: -1;
-    transition: all .7s;
-}  
-
-.btn-white::after {
-    background-color: #fff;
-}
+.btn--white::after {
+  background-color: #fff; }
 
 .btn:hover::after {
-    transform: scaleX(1.4) scaleY(1.6);
-    opacity: 0;
-}
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0; }
 
-.btn-animated {
-    animation: moveInButton .5s ease-out .75s;
-
-    /* animation-fill-mode: backwards; enables the styles at 0% of the animation to be applied before the
+.btn--animated {
+  animation: moveInButton .5s ease-out .75s;
+  /* animation-fill-mode: backwards; enables the styles at 0% of the animation to be applied before the
     *   animation starts
     */
-    animation-fill-mode: backwards;
-} 
+  animation-fill-mode: backwards; }

@@ -1,0 +1,22 @@
+{
+  "name": "natours",
+  "version": "1.0.0",
+  "description": "learning natours project",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "node-sass sass/main.scss css/style.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oddy-bassey/Natours-Project.git"
+  },
+  "author": "Oddy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oddy-bassey/Natours-Project/issues"
+  },
+  "homepage": "https://github.com/oddy-bassey/Natours-Project#readme",
+  "devDependencies": {
+    "node-sass": "^5.0.0"
+  }
+}
