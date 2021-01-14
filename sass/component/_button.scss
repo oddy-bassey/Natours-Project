@@ -1,0 +1,93 @@
+
+/* A PSEUDO CLASS is a lspecia state of a selector E.g link, hover e.t.c
+*  Pseudo classes are used to style elements under special conditions
+* 
+*  NOTE: link is a special state of a selector when it is an anchor element(<a></a>)
+*        visited state is the state when the user has clicked the button before and then sees it again
+*
+*  NOTE: When using the transition property, it has to be specified on the initial state of the element
+*/
+.btn {
+    &:link,
+    &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        
+        /*NOTE: you can specify the padding values either by--> top&bottom  left&right or top right bottom left */
+        padding: 1.5rem 4rem; 
+        
+        /*NOTE: The botton currently has the behaviour of an inline element because its simply text but we should
+        *       display it as an inline-block to gain some padding around it. This way the box model works on
+                this element as if it was just a normal block element.
+        */
+        display: inline-block;
+        border-radius: 8rem;
+        transition: all .2s;
+        position: relative;
+        font-size: 1.6rem;
+    }
+
+    &:hover {
+        transform: translateY(-.3rem);
+
+        /* The box-shadow property holds the following proertie in the stated order
+        *  shadow to X-axis, shadow to y-aixs, blur, color
+        */
+        box-shadow: 0 1rem 2rem rgba($color-black, .2);
+
+
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    }
+
+    &:active {
+        transform: translateY(1px);
+        box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+    }
+
+    &--white {
+        background-color: $color-white;
+        color: $color-grey-dark;
+
+        &::after {
+            background-color: $color-white;
+        }
+    }
+
+    /*
+    *  ::after pseudo element is like a virtual element right after the pseudo element we are selecting
+    *  NOTE: in order to enable the pseudo element display on the page, we need to specify it's content and 
+    *  display property. Also note that the ::after pseudo element is treated like a child of the button so it inherits
+    *  the property of the button element.. E.g height and width (specified as 100% of it's parent)
+    */
+
+    &::after {
+        content: "";
+        display: inline-block;/* This is because the button is also an inline block */
+        height: 100%;
+        width: 100%;
+        border-radius: 8rem;
+        
+        /* NOTE: absolute positioning needs to have a reference. This will be the first element wih relative 
+        *  position that it can find
+        */
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        /* This defines the positon of the element if they are one untop of the other. -1(behind) and 1(infront) */
+        z-index: -1;
+        transition: all .7s;
+    }  
+
+    &--animated {
+        animation: moveInButton .5s ease-out .75s;
+
+        /* animation-fill-mode: backwards; enables the styles at 0% of the animation to be applied before the
+        *   animation starts
+        */
+        animation-fill-mode: backwards;
+    } 
+}
