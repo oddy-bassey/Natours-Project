@@ -1,0 +1,73 @@
+.row {
+    /*
+    * we need to define a width for the row, and one of the standards
+    * used is to make it 1140px grid(but rather use rem where 10px-->1rem
+    */
+    //instead of using width rather use max-width so the component adapts on any screen size
+    max-width: $grid-width;
+    background-color: #eee;
+
+    /*
+    * This is the method used to center blcok elements inside of another block element
+    * Here the top and bottom is set to zero and the left and right auto is used
+    * auto means that the browser when rendering the page will automatically figure out the margin on the left and right.
+    */
+    margin: 0 auto;
+
+    &:not(:last-child) {
+        margin-bottom: $gutter-vertical;
+    }
+
+    @include clearfix;
+
+    /*
+    * [] : is the property selector that allows us select elemnts by properties.
+    * ^ : this means SELECT ELEMENTS THAT STARTS WITH.... E.g col-
+    * * : this means SELECT ANY CLASSES THAT CONTAINS.... E.g col-
+    * $ : this means SELECT ANY CLASS THAT ENDS WITH.... E.g col-
+    *
+    * NOTE: there are a lot of other applications of this E.g
+    * we could also select links based on a specific href attribute, 
+    * or select elements which have their target attribute set to blank e.t.c
+    */
+    [class^="col-"] {
+        background-color: orangered;
+        float: left;
+
+        &:not(:last-child) {
+            margin-right: $gutter-horizontal;
+        } 
+    }
+
+    /*
+    * The calc() css function enables us run calculation in css(the can very well use a mix of variables e.g rem, px e.t.c)
+    * Unlike css, scss does not allow a mix of varriable because the code actually gets compile before the browser renders 
+    * the page and knows what values there are to each properties.
+    *
+    * n/b in order to use sass variables in the css calc() function,  we have to wrap it in #{variable} e.g #{$gutter-horizontal}
+    */
+
+    .col-1-of-2 {
+        width: calc((100% - #{$gutter-horizontal}) / 2);
+    }
+
+    .col-1-of-3 {
+        width: calc((100% - 2 * #{$gutter-horizontal}) / 3);
+    }
+
+    .col-2-of-3 {
+        width: calc(2*((100% - 2 * #{$gutter-horizontal}) / 3) + #{$gutter-horizontal});
+    }
+
+    .col-1-of-4 {
+        width: calc((100% - 3 * #{$gutter-horizontal}) / 4);
+    }
+
+    .col-2-of-4 {
+        width: calc(2*((100% - 3 * #{$gutter-horizontal}) / 4) + #{$gutter-horizontal});
+    }
+
+    .col-3-of-4 {
+        width: calc(3*((100% - 3 * #{$gutter-horizontal}) / 4) + 2*(#{$gutter-horizontal}));
+    }
+}

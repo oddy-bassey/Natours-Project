@@ -1,0 +1,62 @@
+.header{
+    /* height: 95vh- this means the height at all times will be 95% of the VIEW PORT HRIGHT */
+    height: 95vh;
+    /*  Backgorund-image -> Images can be placed untop of each other. This is achieved by including a comma seperated list of the image url's
+    *  note that the first will be untop and the second will be behind(here, the gradient is untop and the image behind)
+    *
+    * Hint(linear-gradient) A third property can be added to describe the direction of the gradient
+    */
+    background-image: linear-gradient(
+        to right bottom,
+         rgba($color-primary-light, 0.8),
+          rgba($color-primary-dark, 0.8)),
+        url("../img/hero.jpg");
+
+    /* background-size: cover- this means that what ever the width of the viewport, the element will adapt nicely to the viewport */
+    background-size: cover;
+    /* background-position: top- This ensures that the top of the element(in this case the image) always stays no matter the 
+    * viewport size....as well as center, bottom (characteristically speaking)
+    */
+    background-position: top;
+    position: relative;
+
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+    &__logo-box {
+        position: absolute;
+    
+        /* NOTE: the top and left properties begin count or take effect from the parent element which has its position set to relative.
+        *  Notice that without the position of the parent element(header) set to relative, it begins its count from the screen axis
+        */
+        top: 4rem;
+        left: 4rem;
+    }
+
+    &__logo {
+        /* NOTE: here, only the height is specified thereby allowing the browser to scale the width accordingly
+        *  This is also applicable to the width being specified only also allowing the browser to scale the height accordingly
+        *  Specifying the height should be more preferrable!
+        */
+        height: 3.5rem;
+    }
+    
+    &__logo:hover {
+        animation: rotate 2s ease;
+    }
+    
+    &__text-box {
+        position: absolute;
+        text-align: center;
+    
+        /* NOTE: The top and left properties positions the element at 50% of parent's height and 50% of parent's width.
+        *  NOTE: The top, bottom, right and left properties are in relation to the parent element(header)
+        */
+        top: 45%;
+        left: 50%;
+    
+        /* NOTE: This then positions the element at the center by subtracting 50% of the elements height and width respectively 
+        *  NOTE: The translate x and y coordinates are in relation to the element itself(text-box)
+        */
+        transform: translate(-50%, -50%);
+    }
+}
