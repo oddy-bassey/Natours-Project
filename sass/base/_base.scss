@@ -1,0 +1,31 @@
+/*
+*Implementing a simple reset using the universal selector(selects all elements on the page)
+*that is: Applying a given set of properties on the entire page
+*/
+*,
+*::after,
+*::before {
+    /* NOTE: by default, browsers apply a certain margin and padding to elements e.g h1 */
+    margin: 0; 
+    padding: 0;
+    /* NOTE: the box-sizing changes the box model of elements so that the borders and padding are no
+    * longer added to the total width or height specified for the box.
+    */
+    box-sizing: inherit;
+}
+
+html {
+    /* NOTE:root font size is always set using the html selector
+    *       setting th e root font size to pixels is bad practice because it restricts the user's ability
+    *       to reset the font size of the page via the browser. Its best to use percentage(%) value which is 
+            relative to the user agent default defined font-size value. Note that rems are not supported for 
+            anything less than internet explorer 9.... else it won't work!
+    */
+
+    //this defines what 1rem should be
+    font-size: 62.5%;
+}
+
+body{
+    box-sizing: border-box;
+}

@@ -1,0 +1,8 @@
+@mixin clearfix {
+    &::after {
+        //need to specify the content property else the after pseudo element will simply not display(it also has to be empty).
+        content: "";
+        display: table;//this is the standard used for clear fix.
+        clear: both;//this actually performs the clear property.. it will clear both float left ot right: which ever we use.
+    }
+}

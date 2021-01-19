@@ -5,7 +5,7 @@
     */
     //instead of using width rather use max-width so the component adapts on any screen size
     max-width: $grid-width;
-    background-color: #eee;
+    //background-color: #eee;
 
     /*
     * This is the method used to center blcok elements inside of another block element
@@ -31,7 +31,7 @@
     * or select elements which have their target attribute set to blank e.t.c
     */
     [class^="col-"] {
-        background-color: orangered;
+        //background-color: orangered;
         float: left;
 
         &:not(:last-child) {
